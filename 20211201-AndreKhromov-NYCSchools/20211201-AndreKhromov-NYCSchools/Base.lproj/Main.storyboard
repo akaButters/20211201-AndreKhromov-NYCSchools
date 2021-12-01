@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KhM-3A-x6y">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--NYC Schools-->
+        <scene sceneID="ovp-Fo-rmi">
+            <objects>
+                <tableViewController id="DPm-BJ-dGx" customClass="ListViewController" customModule="_0211201_AndreKhromov_NYCSchools" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="LRs-0n-c2Y">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SchoolCell" rowHeight="50" id="T4K-Oo-6j5">
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T4K-Oo-6j5" id="hFS-bg-HAI">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Sxv-VK-kJU" kind="show" identifier="showDetail" id="kwI-IP-TaM"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="DPm-BJ-dGx" id="NZy-mV-kAH"/>
+                            <outlet property="delegate" destination="DPm-BJ-dGx" id="gu4-G5-DdD"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="NYC Schools" id="N0Y-eG-Z0h"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="haP-st-b4s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-119" y="-583"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="zbA-fK-RMl">
+            <objects>
+                <viewController id="Sxv-VK-kJU" customClass="DetailViewController" customModule="_0211201_AndreKhromov_NYCSchools" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZJo-YF-zfA">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="School Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="psm-9z-WMe">
+                                <rect key="frame" x="16" y="102" width="358" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="LW7-Dh-Onz">
+                                <rect key="frame" x="16" y="196" width="347.33333333333331" height="156.33333333333337"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="96" translatesAutoresizingMaskIntoConstraints="NO" id="L2b-Me-reW">
+                                        <rect key="frame" x="0.0" y="0.0" width="347.33333333333331" height="20.333333333333332"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="SAT Math Average:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3H-Cl-EC0">
+                                                <rect key="frame" x="0.0" y="0.0" width="164" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Math Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RcK-mX-yVg">
+                                                <rect key="frame" x="260" y="0.0" width="87.333333333333314" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="62" translatesAutoresizingMaskIntoConstraints="NO" id="Yrl-Pt-RDL">
+                                        <rect key="frame" x="0.0" y="45.333333333333343" width="347.33333333333331" height="20.333333333333329"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="SAT Writing Average:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gcy-r9-8IU">
+                                                <rect key="frame" x="0.0" y="0.0" width="182.33333333333334" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Writing Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sE-6V-g1X">
+                                                <rect key="frame" x="244.33333333333331" y="0.0" width="103" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="54" translatesAutoresizingMaskIntoConstraints="NO" id="BKW-Z2-mAJ">
+                                        <rect key="frame" x="0.0" y="90.666666666666686" width="347.33333333333331" height="20.333333333333329"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="SAT Reading Average:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vy0-nB-ucg">
+                                                <rect key="frame" x="0.0" y="0.0" width="182.66666666666666" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reading Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTZ-G7-GoO">
+                                                <rect key="frame" x="236.66666666666666" y="0.0" width="110.66666666666666" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="8fb-xL-Z9c">
+                                        <rect key="frame" x="0.0" y="136" width="347.33333333333331" height="20.333333333333343"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Test Takers:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Suw-hy-w6b">
+                                                <rect key="frame" x="0.0" y="0.0" width="176.33333333333334" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Tests" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUB-YN-HcB">
+                                                <rect key="frame" x="221.33333333333337" y="0.0" width="126" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Jtk-g7-aem"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="psm-9z-WMe" firstAttribute="leading" secondItem="LW7-Dh-Onz" secondAttribute="leading" id="6Rt-Be-ab3"/>
+                            <constraint firstItem="Jtk-g7-aem" firstAttribute="trailing" secondItem="LW7-Dh-Onz" secondAttribute="trailing" constant="26.666666666666686" id="Add-rJ-WKq"/>
+                            <constraint firstItem="psm-9z-WMe" firstAttribute="trailing" secondItem="ZJo-YF-zfA" secondAttribute="trailingMargin" id="DFf-tC-KX0"/>
+                            <constraint firstItem="Jtk-g7-aem" firstAttribute="bottom" secondItem="LW7-Dh-Onz" secondAttribute="bottom" constant="457.66666666666663" id="fDh-9U-Wrp"/>
+                            <constraint firstItem="LW7-Dh-Onz" firstAttribute="leading" secondItem="Jtk-g7-aem" secondAttribute="leading" constant="16" id="lh2-Mh-xJv"/>
+                            <constraint firstItem="psm-9z-WMe" firstAttribute="top" secondItem="Jtk-g7-aem" secondAttribute="top" constant="14" id="xQZ-J9-ypI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="7O9-dP-4VB"/>
+                    <connections>
+                        <outlet property="mathScoreLabel" destination="RcK-mX-yVg" id="gBD-4c-UgJ"/>
+                        <outlet property="numberOfTestTakersLabel" destination="AUB-YN-HcB" id="ZJN-3V-j4c"/>
+                        <outlet property="readingScoreLabel" destination="bTZ-G7-GoO" id="xFh-zc-ARD"/>
+                        <outlet property="schoolNameLabel" destination="psm-9z-WMe" id="kuJ-FD-ubp"/>
+                        <outlet property="writingScoreLabel" destination="7sE-6V-g1X" id="2HO-iu-8Gd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NOn-wW-Hn1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="701.53846153846155" y="-585.07109004739334"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="75a-so-jFq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KhM-3A-x6y" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RdC-Kg-CYZ">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="DPm-BJ-dGx" kind="relationship" relationship="rootViewController" id="b26-fT-awu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BXj-jQ-oez" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-894" y="-583"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
