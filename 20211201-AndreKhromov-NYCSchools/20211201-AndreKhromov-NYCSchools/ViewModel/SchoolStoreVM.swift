@@ -4,58 +4,40 @@ import Foundation
 // and the DetailViewController. Each of which then alters the View,
 // further decoupling itself from the model via dependecy injection.
 class SchoolStoreVM {
-    enum Constants {
-        static let FETCH_TIMEOUT = 15.0
-        static let URL_STRING = "https://data.cityofnewyork.us/resource/f9bf-2cp4.json"
-        static let FATAL_ERROR_URL = "FATAL ERROR: URL could not be created"
-    }
-    
-    // an array of Schools that will be populated from the web
+    // an empty array of Schools that will be populated from the web
     var schools = [School]()
     
-    // parses the JSON data into an array of School and returns the array,
-    // or returns a failure result with the error if unsuccessful
-    private func parseJSON(fromData data: Data) -> Result<[School], Error> {
-        do {
-            let decodedData = try JSONDecoder().decode([School].self, from: data)
-            return .success(decodedData)
-        } catch {
-            return .failure(error)
-        }
+    // an indicator of the success or failure of a fetching the web data
+    var fetchedDataSuccessfully = false
+    
+    // a NetworkService type that will be used to fetch the data from the web
+    let webService: NetworkService
+    
+    init(webService: NetworkService) {
+        self.webService = webService
     }
     
-    // checks that JSON data exists and processes it via parsing,
-    // or returns a failure result with an error if unsuccessful
-    private func processJSONRequest(data: Data?, error: Error?) -> Result<[School], Error> {
-        guard let jsonData = data else {
-            return .failure(error!)
-        }
-        
-        return parseJSON(fromData: jsonData)
-    }
-    
-    // fetches the schools from the web, and runs the completion closure with
-    // either the successful results of the School array being populated,
-    // or returns a failure result with an error if unsuccessful
-    func fetchSchools(completion: @escaping (Result<[School], Error>) -> Void) {
-        if let url = URL(string: Constants.URL_STRING) {
-            let request = URLRequest(url: url)
-            let sessionConfig = URLSessionConfiguration.default
-            sessionConfig.timeoutIntervalForRequest = Constants.FETCH_TIMEOUT
-            let session = URLSession(configuration: sessionConfig)
-            let task = session.dataTask(with: request) {
-                (data, response, error) in
+    // fetches the school data from the web via the NetworkService, which can be a WebService
+    // for a real fetch or a MockWebService if you would like to see mock results outside of
+    // a mock unit test
+    func fetchSchoolsFromWeb() {
+        webService.fetchSchools() { (result) in
+            switch result {
+            case let .success(schools):
+                // sorts the fetched schools in alphabetical order
+                self.schools = schools.sorted { $0.school_name < $1.school_name }
+                // sets the fetch as a success
+                self.fetchedDataSuccessfully = true
                 
-                let result = self.processJSONRequest(data: data, error: error)
-                // dispatch the results onto the main thread to alter the view
-                OperationQueue.main.addOperation {
-                    completion(result)
-                }
+            default:
+                // the failure case
+                break
             }
-            task.resume()
-        } else {
-            // end the program because continuation without a URL is impossible
-            preconditionFailure(Constants.FATAL_ERROR_URL)
+            
+            // post that the fetch has completed to notify the tableview list of schools to act
+            // appropriately for the success or failure
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: ListViewController.Constants.NOTIFY_RELOAD),
+                                            object: nil)
         }
     }
 }

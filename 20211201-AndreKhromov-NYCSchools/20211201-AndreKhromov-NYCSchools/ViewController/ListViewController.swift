@@ -3,6 +3,7 @@ import UIKit
 class ListViewController: UITableViewController {
     
     enum Constants {
+        static let NOTIFY_RELOAD = "reload"
         static let SCHOOL_CELL = "SchoolCell"
         static let SEGUE_ID = "showDetail"
         static let BAD_SEGUE_ID = "Unknown segue identifier"
@@ -13,29 +14,23 @@ class ListViewController: UITableViewController {
         static let ALERT_OK = "Ok"
     }
     
-    var schoolStoreVM = SchoolStoreVM()
+    var schoolStoreVM: SchoolStoreVM!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // subscribe to be informed of when the data from the web has been fecthed or failed
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reloadList),
+                                               name: NSNotification.Name(rawValue: Constants.NOTIFY_RELOAD),
+                                               object: nil)
+        schoolStoreVM.fetchSchoolsFromWeb()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         navigationItem.title = Constants.NAV_TITLE
-
-        // fetch the JSON data for the schools using the SchoolStore ViewModel
-        schoolStoreVM.fetchSchools {
-            (schoolsResult) in
-            
-            // on success, set the tableview with the new list of schools
-            switch schoolsResult {
-            case let .success(schools):
-                self.schoolStoreVM.schools = schools
-                self.tableView.reloadData()
-
-            // the JSON data could not be fetched, put up the error alert
-            // (a nicer UI presentation could be made with alternatives / suggestions)
-            case .failure(_):
-                self.failureAlert()
-            }
-        }
     }
     
     override func tableView(_ tableView: UITableView,
@@ -67,15 +62,20 @@ class ListViewController: UITableViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationItem.title = Constants.NAV_TITLE
-    }
-    
     private func failureAlert() {
         let alert = UIAlertController(title: Constants.ALERT_TITLE, message: Constants.ALERT_MSG, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Constants.ALERT_OK, style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc private func reloadList() {
+        if schoolStoreVM.fetchedDataSuccessfully {
+            // reload the tableview with the fetched data
+            self.tableView.reloadData()
+        } else {
+            // the web data could not be fetched, put up the failure alert
+            // (a nicer UI presentation could be made with alternatives / suggestions)
+            self.failureAlert()
+        }
     }
 }
