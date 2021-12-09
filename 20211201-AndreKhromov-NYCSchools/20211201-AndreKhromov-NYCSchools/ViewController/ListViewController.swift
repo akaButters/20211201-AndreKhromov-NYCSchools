@@ -44,7 +44,7 @@ class ListViewController: UITableViewController {
         cell.accessoryType = .disclosureIndicator
         cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.caption1)
         let item = schoolStoreVM.schools[indexPath.row]
-        cell.textLabel?.text = item.school_name
+        cell.textLabel?.text = item.schoolName
 
         return cell
     }

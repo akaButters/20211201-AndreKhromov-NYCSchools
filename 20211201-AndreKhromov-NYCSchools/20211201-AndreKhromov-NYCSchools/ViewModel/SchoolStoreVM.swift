@@ -25,7 +25,7 @@ class SchoolStoreVM {
             switch result {
             case let .success(schools):
                 // sorts the fetched schools in alphabetical order
-                self.schools = schools.sorted { $0.school_name < $1.school_name }
+                self.schools = schools.sorted { $0.schoolName < $1.schoolName }
                 // sets the fetch as a success
                 self.fetchedDataSuccessfully = true
                 

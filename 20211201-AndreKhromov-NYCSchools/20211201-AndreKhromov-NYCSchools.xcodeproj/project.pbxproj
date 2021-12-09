@@ -94,13 +94,13 @@
 		65519FE62757983700603E94 /* 20211201-AndreKhromov-NYCSchools */ = {
 			isa = PBXGroup;
 			children = (
+				65519FED2757983700603E94 /* Main.storyboard */,
 				65519FE92757983700603E94 /* SceneDelegate.swift */,
 				6551A0042757996C00603E94 /* ViewController */,
 				6551A0012757992800603E94 /* Model */,
 				65519FFE275798F000603E94 /* ViewModel */,
 				655C912D275F48FF004EE2A3 /* Web Service */,
 				65519FE72757983700603E94 /* AppDelegate.swift */,
-				65519FED2757983700603E94 /* Main.storyboard */,
 				65519FF22757983800603E94 /* LaunchScreen.storyboard */,
 				65519FF02757983800603E94 /* Assets.xcassets */,
 				65519FF52757983800603E94 /* Info.plist */,

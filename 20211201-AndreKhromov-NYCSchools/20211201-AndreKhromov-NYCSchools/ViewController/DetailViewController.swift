@@ -13,10 +13,10 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        schoolNameLabel.text = schoolDetails.school_name
-        mathScoreLabel.text = schoolDetails.sat_math_avg_score
-        readingScoreLabel.text = schoolDetails.sat_critical_reading_avg_score
-        writingScoreLabel.text = schoolDetails.sat_writing_avg_score
-        numberOfTestTakersLabel.text = schoolDetails.num_of_sat_test_takers
+        schoolNameLabel.text = schoolDetails.schoolName
+        mathScoreLabel.text = schoolDetails.averageMathScore
+        readingScoreLabel.text = schoolDetails.averageReadingScore
+        writingScoreLabel.text = schoolDetails.averageWritingScore
+        numberOfTestTakersLabel.text = schoolDetails.numberOfTakers
     }
 }

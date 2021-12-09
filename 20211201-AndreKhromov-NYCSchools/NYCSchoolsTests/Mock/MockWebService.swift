@@ -17,8 +17,18 @@ class MockWebService: NetworkService {
     
     // mock school results for a successful mock
     private var mockSchools = [
-        School(dbn: "0000", school_name: "Mock School Name 1", num_of_sat_test_takers: "1", sat_critical_reading_avg_score: "800", sat_math_avg_score: "700", sat_writing_avg_score: "600"),
-        School(dbn: "0001", school_name: "Mock School Name 2", num_of_sat_test_takers: "2", sat_critical_reading_avg_score: "500", sat_math_avg_score: "400", sat_writing_avg_score: "300")
+        School(dbNumber: "0000",
+               schoolName: "Mock School Name 1",
+               numberOfTakers: "1",
+               averageReadingScore: "800",
+               averageWritingScore: "700",
+               averageMathScore: "600"),
+        School(dbNumber: "0001",
+               schoolName: "Mock School Name 2",
+               numberOfTakers: "2",
+               averageReadingScore: "500",
+               averageWritingScore: "400",
+               averageMathScore: "300")
     ]
     
     // the main point of this mock web service
